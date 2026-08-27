@@ -82,14 +82,14 @@ def login_view() -> None:
 
 
 def logged_in_shell() -> None:
-    home = st.Page("pages/1_Home_Dashboard.py", title="Home Dashboard", icon="🏠", default=True)
-    detect = st.Page("pages/2_AI_Waste_Detection.py", title="AI Waste Detection", icon="📷")
-    segregation = st.Page("pages/3_Smart_Segregation.py", title="Smart Segregation", icon="♻️")
-    monitoring = st.Page("pages/4_Smart_Bin_Monitoring.py", title="Smart Bin Monitoring", icon="🗑️")
-    prediction = st.Page("pages/5_Overflow_Prediction.py", title="Overflow Prediction", icon="📈")
-    routing = st.Page("pages/6_Route_Optimization.py", title="Route Optimization", icon="🚚")
-    analytics = st.Page("pages/7_Waste_Analytics.py", title="Waste Analytics", icon="📊")
-    admin = st.Page("pages/8_Admin_Panel.py", title="Admin Panel", icon="🛠️")
+    home = st.Page("app_pages/1_Home_Dashboard.py", title="Home Dashboard", icon="🏠", default=True)
+    detect = st.Page("app_pages/2_AI_Waste_Detection.py", title="AI Waste Detection", icon="📷")
+    segregation = st.Page("app_pages/3_Smart_Segregation.py", title="Smart Segregation", icon="♻️")
+    monitoring = st.Page("app_pages/4_Smart_Bin_Monitoring.py", title="Smart Bin Monitoring", icon="🗑️")
+    prediction = st.Page("app_pages/5_Overflow_Prediction.py", title="Overflow Prediction", icon="📈")
+    routing = st.Page("app_pages/6_Route_Optimization.py", title="Route Optimization", icon="🚚")
+    analytics = st.Page("app_pages/7_Waste_Analytics.py", title="Waste Analytics", icon="📊")
+    admin = st.Page("app_pages/8_Admin_Panel.py", title="Admin Panel", icon="🛠️")
 
     role = st.session_state.user["role"]
     role_pages = {

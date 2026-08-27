@@ -56,7 +56,7 @@ for bin_id, p in preds.items():
         "Bin Code": b.bin_code, "Location": b.location.name, "Category": b.waste_category.label,
         "Current Fill %": round(b.current_fill_level, 1),
         "Predicted Fill (24h)": p.predicted_fill_level_24h,
-        "Hours to Full": p.predicted_hours_to_full if p.predicted_hours_to_full is not None else "—",
+        "Hours to Full": p.predicted_hours_to_full,
         "Overflow Prob.": f"{p.overflow_probability:.0%}",
         "Collection Required": "Yes" if p.collection_required else "No",
         "Priority Score": p.priority_score,
