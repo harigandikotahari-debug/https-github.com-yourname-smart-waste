@@ -13,8 +13,13 @@ scikit-learn==1.5.2
 joblib==1.4.2
 
 # Computer vision / AI
-opencv-python==4.10.0.84
+# opencv-python-headless (not opencv-python) - the GUI build commonly fails
+# to import on headless cloud containers that lack libGL.
+opencv-python-headless==4.10.0.84
 ultralytics==8.3.28
+# CPU-only wheels - the plain PyPI index resolves torch/torchvision to a
+# much larger CUDA build on Linux; this project only ever runs on CPU.
+--extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.4.1
 torchvision==0.19.1
 
