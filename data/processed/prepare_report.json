@@ -1,0 +1,57 @@
+{
+  "raw_counts": {
+    "metal": 790,
+    "organic": 847,
+    "other": 813,
+    "cardboard": 461,
+    "glass": 420,
+    "paper": 500,
+    "plastic": 921
+  },
+  "balanced_counts": {
+    "metal": 790,
+    "organic": 840,
+    "other": 813,
+    "cardboard": 461,
+    "glass": 420,
+    "paper": 500,
+    "plastic": 840
+  },
+  "split_counts": {
+    "metal": {
+      "train": 553,
+      "val": 118,
+      "test": 119
+    },
+    "organic": {
+      "train": 588,
+      "val": 126,
+      "test": 126
+    },
+    "other": {
+      "train": 569,
+      "val": 121,
+      "test": 123
+    },
+    "cardboard": {
+      "train": 322,
+      "val": 69,
+      "test": 70
+    },
+    "glass": {
+      "train": 294,
+      "val": 63,
+      "test": 63
+    },
+    "paper": {
+      "train": 350,
+      "val": 75,
+      "test": 75
+    },
+    "plastic": {
+      "train": 588,
+      "val": 126,
+      "test": 126
+    }
+  }
+}

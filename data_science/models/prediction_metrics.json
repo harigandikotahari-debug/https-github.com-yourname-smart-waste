@@ -1,0 +1,55 @@
+{
+  "model_version": "fill_predictor_v1",
+  "trained_at": "2026-08-27T16:27:47.550693",
+  "n_train_rows": 8376,
+  "n_test_rows": 3141,
+  "regression": {
+    "target": "fill_level_24h_ahead",
+    "mae": 7.62358047232766,
+    "r2": 0.712719537586352
+  },
+  "classification": {
+    "target": "overflow_within_24h",
+    "precision": 0.8204833141542003,
+    "recall": 0.9025316455696203,
+    "f1": 0.8595539481615431,
+    "roc_auc": 0.972418685288781,
+    "confusion_matrix": [
+      [
+        2195,
+        156
+      ],
+      [
+        77,
+        713
+      ]
+    ],
+    "report": {
+      "0.0": {
+        "precision": 0.9661091549295775,
+        "recall": 0.9336452573373033,
+        "f1-score": 0.9495998269521956,
+        "support": 2351.0
+      },
+      "1.0": {
+        "precision": 0.8204833141542003,
+        "recall": 0.9025316455696203,
+        "f1-score": 0.8595539481615431,
+        "support": 790.0
+      },
+      "accuracy": 0.9258198026106336,
+      "macro avg": {
+        "precision": 0.8932962345418889,
+        "recall": 0.9180884514534617,
+        "f1-score": 0.9045768875568694,
+        "support": 3141.0
+      },
+      "weighted avg": {
+        "precision": 0.929482471003265,
+        "recall": 0.9258198026106336,
+        "f1-score": 0.9269521847221364,
+        "support": 3141.0
+      }
+    }
+  }
+}

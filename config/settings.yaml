@@ -1,0 +1,132 @@
+# =============================================================================
+# Smart Waste AI - Central Configuration
+# Everything here is meant to be edited per-municipality without touching code.
+# =============================================================================
+
+app:
+  name: "AI Smart Waste Segregation & Intelligent Collection System"
+  organization: "Municipal Corporation (Demo)"
+  timezone: "Asia/Kolkata"
+
+database:
+  # SQLite for local dev/demo. Swap to a postgresql+psycopg2:// URL for
+  # production; SQLAlchemy models use only portable column types/constraints
+  # so no code changes are required, only this URL.
+  url: "sqlite:///./database/smart_waste.db"
+
+# -----------------------------------------------------------------------------
+# Waste category -> bin/stream mapping. This is the piece that differs between
+# municipalities (color codes, stream names, number of streams). Change this
+# block, not the code, to adapt to a different city's rules.
+# -----------------------------------------------------------------------------
+waste_categories:
+  plastic:
+    label: "Plastic"
+    bin_stream: "Recyclable / Dry Waste"
+    bin_color: "Blue"
+    recyclable: true
+    description: "Bottles, wrappers, containers, bags."
+  paper:
+    label: "Paper"
+    bin_stream: "Recyclable / Dry Waste"
+    bin_color: "Blue"
+    recyclable: true
+    description: "Newspaper, printed sheets, packaging paper."
+  cardboard:
+    label: "Cardboard"
+    bin_stream: "Recyclable / Dry Waste"
+    bin_color: "Blue"
+    recyclable: true
+    description: "Boxes, cartons, corrugated packaging."
+  glass:
+    label: "Glass"
+    bin_stream: "Recyclable / Dry Waste"
+    bin_color: "Blue"
+    recyclable: true
+    description: "Bottles, jars, broken glassware (handle with care)."
+  metal:
+    label: "Metal"
+    bin_stream: "Recyclable / Dry Waste"
+    bin_color: "Blue"
+    recyclable: true
+    description: "Cans, tins, foil, scrap metal."
+  organic:
+    label: "Organic / Biological"
+    bin_stream: "Wet Waste / Compostable"
+    bin_color: "Green"
+    recyclable: false
+    description: "Food scraps, peels, garden waste, biodegradable material."
+  other:
+    label: "Other / Unknown"
+    bin_stream: "General Waste (Manual Sorting Required)"
+    bin_color: "Black"
+    recyclable: false
+    description: "Unclassified, mixed, or low-confidence items."
+
+# -----------------------------------------------------------------------------
+# AI safety
+# -----------------------------------------------------------------------------
+ai:
+  # Below this confidence, a detection is downgraded to "Unknown / Manual
+  # Verification Required" regardless of the raw predicted label.
+  confidence_threshold: 0.55
+  detector_model_path: "ai_model/weights/yolov8n.pt"          # pretrained COCO
+  classifier_model_path: "ai_model/weights/waste_classifier.pt"  # our fine-tuned model
+  privacy:
+    blur_faces: true
+    blur_plates: true   # best-effort heuristic only, see docs/LIMITATIONS.md
+
+# -----------------------------------------------------------------------------
+# Bin fill-level status thresholds (used for display only; the *prediction*
+# of when a bin needs collection is model-driven, not this simple cutoff -
+# see data_science/fill_prediction.py)
+# -----------------------------------------------------------------------------
+bin_status_thresholds:
+  normal: 40        # 0-40%
+  filling: 70        # 40-70%
+  almost_full: 90    # 70-90%
+  critical: 100      # 90-100%
+
+# -----------------------------------------------------------------------------
+# Collection priority scoring weights (must sum to 1.0)
+# -----------------------------------------------------------------------------
+priority_weights:
+  fill_level: 0.30
+  overflow_probability: 0.25
+  time_since_collection: 0.15
+  location_importance: 0.15
+  historical_generation_rate: 0.15
+
+priority_bands:
+  low: 40
+  medium: 65
+  high: 85
+  critical: 100
+
+location_importance:
+  # Multiplier applied per location "type" - configurable per municipality.
+  hospital: 1.0
+  market: 0.9
+  school: 0.8
+  residential: 0.6
+  commercial: 0.7
+  park: 0.5
+
+# -----------------------------------------------------------------------------
+# Route optimization
+# -----------------------------------------------------------------------------
+routing:
+  num_vehicles: 3
+  vehicle_capacity_bins: 12
+  depot_lat: 28.6139
+  depot_lon: 77.2090
+  average_speed_kmph: 25
+  service_time_minutes_per_bin: 5
+
+# -----------------------------------------------------------------------------
+# Simulated IoT sensor generation (prototype only - see docs/LIMITATIONS.md)
+# -----------------------------------------------------------------------------
+simulation:
+  days_of_history: 30
+  reading_interval_hours: 2
+  random_seed: 42

@@ -1,0 +1,41 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data & models (large / generated, not source)
+data/raw/
+data/processed/*
+!data/processed/prepare_report.json
+ai_model/weights/*.pt
+ai_model/runs/
+!ai_model/weights/.gitkeep
+data_science/models/*.joblib
+data/uploads/
+pipeline_run.log
+# Small JSON evaluation/metrics reports (ai_model/evaluation_report.json,
+# data_science/models/prediction_metrics.json, data/processed/prepare_report.json)
+# are intentionally NOT ignored - they're real evidence of model performance.
+
+# Ultralytics auto-downloads pretrained checkpoints to the CWD when given a
+# bare filename (e.g. the yolov8n-cls.pt ImageNet backbone used as the
+# transfer-learning starting point) - these are re-downloaded on demand.
+/*.pt
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Env / secrets
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
