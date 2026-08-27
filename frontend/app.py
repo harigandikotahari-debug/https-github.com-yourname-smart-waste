@@ -18,7 +18,7 @@ from database.db import get_session
 from frontend.components.common import inject_style
 from services.auth_service import login
 
-st.set_page_config(page_title="AI Smart Waste System", page_icon="♻️", layout="wide")
+st.set_page_config(page_title="SwachhAI", page_icon=str(ROOT / "branding" / "web" / "favicon_180.png"), layout="wide")
 
 if "user" not in st.session_state:
     st.session_state.user = None
@@ -36,8 +36,13 @@ def _db_ready() -> bool:
 
 def login_view() -> None:
     inject_style()
-    st.title("♻️ AI Smart Waste Segregation & Intelligent Collection System")
-    st.caption("Smart India Hackathon Prototype — AI detection, smart bin monitoring, overflow prediction & route optimization")
+    st.image(str(ROOT / "branding" / "logo_512.png"), width=96)
+    st.title("SwachhAI")
+    st.caption(
+        "AI Smart Waste Segregation & Intelligent Collection System — "
+        "Smart India Hackathon Prototype: AI detection, smart bin monitoring, "
+        "overflow prediction & route optimization"
+    )
 
     if not _db_ready():
         st.error(

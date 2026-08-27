@@ -1,4 +1,7 @@
-# ♻️ AI Smart Waste Segregation & Intelligent Collection System
+# ♻️ SwachhAI — AI Smart Waste Segregation & Intelligent Collection System
+
+<img src="branding/logo_512.png" width="96" alt="SwachhAI logo">
+
 
 A Smart India Hackathon prototype: computer-vision waste detection and
 segregation recommendation, simulated-IoT bin fill/overflow prediction,
