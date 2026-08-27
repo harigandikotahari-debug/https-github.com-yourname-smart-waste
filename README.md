@@ -80,6 +80,7 @@ Full breakdown and data-flow diagram: `docs/ARCHITECTURE.md`.
 - [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md) — what this prototype does and doesn't solve, honestly
 - [`docs/TESTING.md`](docs/TESTING.md) — automated + manual test procedure
 - [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — free-tier hosting guide (Streamlit Cloud / Render / HF Spaces / Railway)
+- [`docs/PLAY_STORE.md`](docs/PLAY_STORE.md) — packaging the live app for Google Play (no-code Android wrapper), store listing copy
 - [`docs/SIH_PRESENTATION.md`](docs/SIH_PRESENTATION.md) — problem statement through scalability, slide-ready
 - [`docs/JUDGE_QA.md`](docs/JUDGE_QA.md) — anticipated judge questions with straight answers
 
